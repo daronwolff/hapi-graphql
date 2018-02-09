@@ -1,8 +1,13 @@
 // Plugins
 import { graphqlHapi, graphiqlHapi } from 'apollo-server-hapi';
+import { makeExecutableSchema } from 'graphql-tools';
 
 // Loading schemas
-import myGraphQLSchema from '../schema';
+import typeDefs from '../graphql/typeDefs';
+import resolvers from '../graphql/resolvers';
+
+const myGraphQLSchema = makeExecutableSchema({ typeDefs, resolvers });
+
 /**
  * Exports array of plugins with configuration.
  * @type {Array}
