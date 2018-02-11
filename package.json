@@ -1,7 +1,7 @@
 {
-  "name": "bsa-graphql",
+  "name": "hapi-graphql-sequelize",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hapijs sequalize graphql",
   "main": "main.js",
   "scripts": {
     "start": "nodemon --exec babel-node -- main.js",
@@ -20,12 +20,12 @@
     "hapi": "^17.2.0",
     "merge-graphql-schemas": "^1.4.0",
     "mysql2": "^1.5.2",
-    "sequelize": "^4.33.2"
+    "sequelize": "^4.33.2",
+    "babel-core": "^6.26.0",
+    "babel-polyfill": "^6.26.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",

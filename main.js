@@ -5,5 +5,5 @@ import 'babel-core/register';
 // Server
 import configureServer from './server';
 
-// Creating REST API server connection.
+// Creating server connection.
 configureServer();

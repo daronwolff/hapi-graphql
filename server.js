@@ -1,5 +1,5 @@
 /**
- * @file Manages the configuration settings server configuration.
+ * @file Manages the configuration settings server.
  */
 
 // Dependencies
@@ -9,7 +9,10 @@ import Hapi from 'hapi';
 import config from './config';
 
 // Loading pluggins
-import plugins from './plugins';
+import plugins from './src/plugins';
+
+// Loading routes
+import routes from './src/routes';
 
 // Setting up server
 export default async () => {
@@ -21,10 +24,14 @@ export default async () => {
   // Registering plugins
   await Server.register(plugins);
 
+  // Registering routes
+  await Server.route(routes);
+
+  /* eslint-disable no-console */
   try {
     await Server.start();
   } catch (err) {
     console.info(`Error while starting server: ${err.message}`);
   }
-  console.info(`+++ Server running at: ${Server.info.uri}`);
+  console.info(`Server running at: http://${Server.info.uri}`);
 };

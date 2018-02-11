@@ -4,19 +4,22 @@ import path from 'path';
 import Sequelize from 'sequelize';
 
 // Config
-import config from '../config';
+import config from '../../config';
+
+// Getting database configuration
+const { database } = config;
 
 // List of db modules
 const db = {};
 
-// Opening connection
-const connection = new Sequelize('articles', 'root', 'passw0rd', {
-  host: config.database.host,
-  dialect: config.database.dialect,
-  pool: config.database.pool,
+// Opening database connection
+const connection = new Sequelize(database.name, database.user, database.password, {
+  host: database.host,
+  dialect: database.dialect,
+  pool: database.pool,
 });
 
-// Loading db modules
+// Loading all models
 fs
   .readdirSync(__dirname)
   .filter(file => (file.indexOf('.') !== 0) && (file !== 'index.js'))
@@ -38,4 +41,5 @@ Object.keys(db).forEach((modelName) => {
 db.connection = connection;
 db.Sequelize = Sequelize;
 
+// Exporting object
 export default db;
